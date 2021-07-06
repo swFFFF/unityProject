@@ -20,7 +20,10 @@ public class PlayerController : MonoBehaviour
 
     public Transform renderCamera;
 
-    public float angleSpeed = 400;  //旋转角速度
+    //public float angleSpeed = 400;  //旋转角速度
+
+    private float MaxAngleSpeed = 1200;
+    private float MinAngleSpeed = 400;
     public float acceleratedSpeed = 5;//人物加速度
 
     private Animator animator;
@@ -33,9 +36,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        CalculateMove();
+        //CalculateMove();
         CalculateVerticalSpeed();
         CalculateForwardSpeed();
+        CalculateRotation();
+    }
+
+    private void OnAnimatorMove()
+    {
+        CalculateMove();
     }
 
     public void CalculateMove()
@@ -44,16 +53,20 @@ public class PlayerController : MonoBehaviour
         //float v = Input.GetAxis("Vertical");
 
         //Vector3 move = new Vector3(h, 0, v);
-        move.Set(playerInput.Move.x, 0, playerInput.Move.y);
-        move *= Time.deltaTime * moveSpeed;
-        
-        move = renderCamera.TransformDirection(move);      //转换成跟随相机方向  不需要计算Y轴
-        if (move.x != 0 || move.z != 0)
+
+        if(isGrounded)
         {
-            move.y = 0;
-            //transform.rotation = Quaternion.LookRotation(move); //旋转人物朝向
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(move), angleSpeed * Time.deltaTime);   //人物朝向转动缓冲
+            move = animator.deltaPosition;
         }
+        else
+        {
+            move = moveSpeed * transform.forward * Time.deltaTime;
+        }
+        
+        //move.Set(playerInput.Move.x, 0, playerInput.Move.y);
+        //move *= Time.deltaTime * moveSpeed;
+        
+        //move = renderCamera.TransformDirection(move);      //转换成跟随相机方向  不需要计算Y轴
         
         move += Vector3.up * verticalSpeed * Time.deltaTime;
 
@@ -61,6 +74,7 @@ public class PlayerController : MonoBehaviour
 
         characterController.Move(move);
         isGrounded = characterController.isGrounded;
+        animator.SetBool("isGround", isGrounded);
     }
 
     private void CalculateVerticalSpeed()
@@ -82,11 +96,27 @@ public class PlayerController : MonoBehaviour
             }
             verticalSpeed -= gravity * Time.deltaTime;
         }
+
+        animator.SetFloat("verticalSpeed", verticalSpeed);
     }
 
     private void CalculateForwardSpeed()
     {
         moveSpeed = Mathf.MoveTowards(moveSpeed, maxMoveSpeed * playerInput.Move.normalized.magnitude, acceleratedSpeed * Time.deltaTime);
         animator.SetFloat("forwardSpeed",moveSpeed);
+
+    }
+
+    private void CalculateRotation()
+    {
+        if (playerInput.Move.x != 0 || playerInput.Move.y != 0)
+        {
+            Vector3 targetDirection = renderCamera.TransformDirection(new Vector3(playerInput.Move.x,0,playerInput.Move.y));
+            targetDirection.y = 0;
+
+            float turnSpeed = Mathf.Lerp(MaxAngleSpeed, MinAngleSpeed, moveSpeed / maxMoveSpeed) * Time.deltaTime; ;
+            //transform.rotation = Quaternion.LookRotation(move); //旋转人物朝向
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection), turnSpeed);   //人物朝向转动缓冲
+        }
     }
 }
