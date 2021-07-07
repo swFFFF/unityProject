@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region 字段
     public float maxMoveSpeed = 5;
     public float moveSpeed = 0;
     public float jumpSpeed = 10;
@@ -27,26 +28,42 @@ public class PlayerController : MonoBehaviour
     public float acceleratedSpeed = 5;//人物加速度
 
     private Animator animator;
+
+    private AnimatorStateInfo currentStateInfo;
+    private AnimatorStateInfo nextStateInfo;
+
+    #endregion
+
+    #region 常量
+    private int QuickTurnLeftHash = Animator.StringToHash("EllenQuickTurnLeft");
+    private int QuickTurnRightHash = Animator.StringToHash("EllenQuickTurnRight");
+    #endregion
+
+    #region Unity回调
     private void Awake()
     {
         playerInput = transform.GetComponent<PlayerInput>();
         characterController = transform.GetComponent<CharacterController>();
         animator = transform.GetComponent<Animator>();
+
     }
 
     private void Update()
     {
+        currentStateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        nextStateInfo = animator.GetNextAnimatorStateInfo(0);
         //CalculateMove();
         CalculateVerticalSpeed();
         CalculateForwardSpeed();
         CalculateRotation();
     }
-
     private void OnAnimatorMove()
     {
         CalculateMove();
     }
+    #endregion
 
+    #region 方法
     public void CalculateMove()
     {
         //float h = Input.GetAxis("Horizontal");
@@ -54,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
         //Vector3 move = new Vector3(h, 0, v);
 
-        if(isGrounded)
+        if (isGrounded)
         {
             move = animator.deltaPosition;
         }
@@ -62,13 +79,14 @@ public class PlayerController : MonoBehaviour
         {
             move = moveSpeed * transform.forward * Time.deltaTime;
         }
-        
+
         //move.Set(playerInput.Move.x, 0, playerInput.Move.y);
         //move *= Time.deltaTime * moveSpeed;
-        
+
         //move = renderCamera.TransformDirection(move);      //转换成跟随相机方向  不需要计算Y轴
-        
+
         move += Vector3.up * verticalSpeed * Time.deltaTime;
+        transform.rotation *= animator.deltaRotation;
 
         //move = transform.TransformDirection(move);     //转换成角色方向
 
@@ -90,7 +108,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if(!playerInput.Jump && verticalSpeed > 0)
+            if (!playerInput.Jump && verticalSpeed > 0)
             {
                 verticalSpeed -= gravity * Time.deltaTime;
             }
@@ -103,7 +121,7 @@ public class PlayerController : MonoBehaviour
     private void CalculateForwardSpeed()
     {
         moveSpeed = Mathf.MoveTowards(moveSpeed, maxMoveSpeed * playerInput.Move.normalized.magnitude, acceleratedSpeed * Time.deltaTime);
-        animator.SetFloat("forwardSpeed",moveSpeed);
+        animator.SetFloat("forwardSpeed", moveSpeed);
 
     }
 
@@ -111,12 +129,41 @@ public class PlayerController : MonoBehaviour
     {
         if (playerInput.Move.x != 0 || playerInput.Move.y != 0)
         {
-            Vector3 targetDirection = renderCamera.TransformDirection(new Vector3(playerInput.Move.x,0,playerInput.Move.y));
+            Vector3 targetDirection = renderCamera.TransformDirection(new Vector3(playerInput.Move.x, 0, playerInput.Move.y));
             targetDirection.y = 0;
 
             float turnSpeed = Mathf.Lerp(MaxAngleSpeed, MinAngleSpeed, moveSpeed / maxMoveSpeed) * Time.deltaTime; ;
             //transform.rotation = Quaternion.LookRotation(move); //旋转人物朝向
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection), turnSpeed);   //人物朝向转动缓冲
+            float turnAngle = Vector3.SignedAngle(transform.forward, targetDirection, Vector3.up);
+            if (IsUpdateDirection())
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection), turnSpeed);   //人物朝向转动缓冲
+            }
+
+            animator.SetFloat("turnAngleRad", turnAngle * Mathf.Deg2Rad);
         }
     }
+
+    public bool IsUpdateDirection()
+    {
+        bool isUpdate = currentStateInfo.shortNameHash != QuickTurnLeftHash && currentStateInfo.shortNameHash != QuickTurnRightHash;
+        isUpdate = nextStateInfo.shortNameHash != QuickTurnLeftHash && nextStateInfo.shortNameHash != QuickTurnRightHash;
+        return isUpdate;
+    }
+    #endregion
+
+    #region 动画事件
+    private void OnIdleStart()
+    {
+        animator.SetInteger("RandomIdle", -1);
+    }
+
+    private void OnIdleEnd()
+    {
+        animator.SetInteger("RandomIdle", Random.Range(0, 3));
+    }
+    #endregion
+
+
+
 }
