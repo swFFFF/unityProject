@@ -29,12 +29,12 @@ public class XFImageFontMaker : MonoBehaviour
             return;
         }
 
-        string texturePath = AssetDatabase.GetAssetPath(texture);
-        string textureExtension = Path.GetExtension(texturePath);
-        string filePath = texturePath.Remove(texturePath.Length - textureExtension.Length);
+        string texturePath = AssetDatabase.GetAssetPath(texture);//获取资源贴图路径
+        string textureExtension = Path.GetExtension(texturePath);//获取资源路径后缀名
+        string filePath = texturePath.Remove(texturePath.Length - textureExtension.Length);//去掉后缀（文件路径）
 
-        string matPath = filePath + ".mat";
-        string fontPath = filePath + ".fontsettings";
+        string matPath = filePath + ".mat"; //  材质路径
+        string fontPath = filePath + ".fontsettings";   //字体设置文件路径
 
         Font myFont = AssetDatabase.LoadAssetAtPath<Font>(fontPath);
         if ( myFont == null ) {
