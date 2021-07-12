@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     private AnimatorStateInfo currentStateInfo;
     private AnimatorStateInfo nextStateInfo;
 
+    public bool isCanAttack = false;
+
     #endregion
 
     #region 常量
@@ -56,6 +58,11 @@ public class PlayerController : MonoBehaviour
         CalculateVerticalSpeed();
         CalculateForwardSpeed();
         CalculateRotation();
+
+        if(playerInput.Attack && isCanAttack)
+        {
+            //TODO
+        }
     }
     private void OnAnimatorMove()
     {
@@ -153,6 +160,11 @@ public class PlayerController : MonoBehaviour
         bool isUpdate = currentStateInfo.shortNameHash != QuickTurnLeftHash && currentStateInfo.shortNameHash != QuickTurnRightHash;
         isUpdate = nextStateInfo.shortNameHash != QuickTurnLeftHash && nextStateInfo.shortNameHash != QuickTurnRightHash;
         return isUpdate;
+    }
+
+    public void SetCanAttack(bool isAttack)
+    {
+        isCanAttack = isAttack;
     }
     #endregion
 
