@@ -115,7 +115,11 @@ public class PlayerController : MonoBehaviour
             verticalSpeed -= gravity * Time.deltaTime;
         }
 
-        animator.SetFloat("verticalSpeed", verticalSpeed);
+        if(!isGrounded)
+        {
+            animator.SetFloat("verticalSpeed", verticalSpeed);
+        }
+        
     }
 
     private void CalculateForwardSpeed()
