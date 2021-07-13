@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isCanAttack = false;
 
+    public GameObject weapon;
     #endregion
 
     #region 常量
@@ -59,9 +60,11 @@ public class PlayerController : MonoBehaviour
         CalculateForwardSpeed();
         CalculateRotation();
 
+        animator.SetFloat("normalizedTime",Mathf.Repeat(currentStateInfo.normalizedTime, 1));
+        animator.ResetTrigger("attack");
         if(playerInput.Attack && isCanAttack)
         {
-            //TODO
+            animator.SetTrigger("attack");
         }
     }
     private void OnAnimatorMove()
@@ -166,6 +169,22 @@ public class PlayerController : MonoBehaviour
     {
         isCanAttack = isAttack;
     }
+
+    public void ShowWeapon()
+    {
+        CancelInvoke("HideWeaponExcute");
+        weapon.SetActive(true);
+    }
+
+    public void HideWeapon()
+    {
+        Invoke("HideWeaponExcute", 1);
+    }
+
+    public void HideWeaponExcute()
+    {
+        weapon.SetActive(false);
+    }
     #endregion
 
     #region 动画事件
@@ -177,6 +196,16 @@ public class PlayerController : MonoBehaviour
     private void OnIdleEnd()
     {
         animator.SetInteger("RandomIdle", Random.Range(0, 3));
+    }
+
+    private void MeleeAttackStart()
+    {
+
+    }
+
+    private void MeleeAttackEnd()
+    {
+
     }
     #endregion
 
