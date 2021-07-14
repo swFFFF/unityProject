@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     private AnimatorStateInfo currentStateInfo;
     private AnimatorStateInfo nextStateInfo;
 
+    public bool isCanAttack = false;
+
+    public GameObject weapon;
     #endregion
 
     #region 常量
@@ -56,6 +59,13 @@ public class PlayerController : MonoBehaviour
         CalculateVerticalSpeed();
         CalculateForwardSpeed();
         CalculateRotation();
+
+        animator.SetFloat("normalizedTime",Mathf.Repeat(currentStateInfo.normalizedTime, 1));
+        animator.ResetTrigger("attack");
+        if(playerInput.Attack && isCanAttack)
+        {
+            animator.SetTrigger("attack");
+        }
     }
     private void OnAnimatorMove()
     {
@@ -115,7 +125,11 @@ public class PlayerController : MonoBehaviour
             verticalSpeed -= gravity * Time.deltaTime;
         }
 
-        animator.SetFloat("verticalSpeed", verticalSpeed);
+        if(!isGrounded)
+        {
+            animator.SetFloat("verticalSpeed", verticalSpeed);
+        }
+        
     }
 
     private void CalculateForwardSpeed()
@@ -150,6 +164,27 @@ public class PlayerController : MonoBehaviour
         isUpdate = nextStateInfo.shortNameHash != QuickTurnLeftHash && nextStateInfo.shortNameHash != QuickTurnRightHash;
         return isUpdate;
     }
+
+    public void SetCanAttack(bool isAttack)
+    {
+        isCanAttack = isAttack;
+    }
+
+    public void ShowWeapon()
+    {
+        CancelInvoke("HideWeaponExcute");
+        weapon.SetActive(true);
+    }
+
+    public void HideWeapon()
+    {
+        Invoke("HideWeaponExcute", 1);
+    }
+
+    public void HideWeaponExcute()
+    {
+        weapon.SetActive(false);
+    }
     #endregion
 
     #region 动画事件
@@ -161,6 +196,16 @@ public class PlayerController : MonoBehaviour
     private void OnIdleEnd()
     {
         animator.SetInteger("RandomIdle", Random.Range(0, 3));
+    }
+
+    private void MeleeAttackStart()
+    {
+
+    }
+
+    private void MeleeAttackEnd()
+    {
+
     }
     #endregion
 
