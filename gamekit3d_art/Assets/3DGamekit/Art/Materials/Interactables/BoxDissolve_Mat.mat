@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: BoxDissolve_Mat
   m_Shader: {fileID: 4800000, guid: df778dfc69de7fb48809501a413b8bbf, type: 3}
   m_ShaderKeywords: _NORMALMAP _USE_MASK_ON
@@ -104,7 +105,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _Cutoff: 0.5
+    - _Cutoff: 0
     - _DetailNormalMapScale: 1
     - _DisplaceAmount: 0
     - _DstBlend: 0

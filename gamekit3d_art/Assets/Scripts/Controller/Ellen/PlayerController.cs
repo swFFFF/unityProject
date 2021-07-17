@@ -200,12 +200,12 @@ public class PlayerController : MonoBehaviour
 
     private void MeleeAttackStart()
     {
-
+        weapon.GetComponent<WeaponAttackController>().StartAttack();
     }
 
     private void MeleeAttackEnd()
     {
-
+        weapon.GetComponent<WeaponAttackController>().EndAttack();
     }
     #endregion
 
