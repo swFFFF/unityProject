@@ -95,6 +95,7 @@ public class WeaponAttackController : MonoBehaviour
         //进行攻击
         DamageMessage data = new DamageMessage();
         data.damage = damage;
+        data.damagePosition = myself.transform.position;
         damageable.OnDamage(data);
 
         attackList.Add(obj);

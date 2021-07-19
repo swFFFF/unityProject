@@ -185,6 +185,17 @@ public class PlayerController : MonoBehaviour
     {
         weapon.SetActive(false);
     }
+
+    public void OnHurt(Damageable damageable, DamageMessage data)
+    {
+        Vector3 direction = data.damagePosition - transform.position;
+        direction.y = 0;
+
+        Vector3 localDirection = transform.InverseTransformDirection(direction); //转换成角色的局部方向
+        animator.SetFloat("HurtX", localDirection.x);
+        animator.SetFloat("HurtY", localDirection.z);
+        animator.SetTrigger("hurt");
+    }
     #endregion
 
     #region 动画事件

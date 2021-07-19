@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class DamageMessage
 {
     public int damage;//伤害
+    public Vector3 damagePosition;
 }
 [Serializable]
 public class DamageEvent:UnityEvent<Damageable, DamageMessage>
@@ -26,6 +27,7 @@ public class Damageable : MonoBehaviour
     public DamageEvent onHurt;
     public DamageEvent onDie;
     public DamageEvent onReset;
+    public DamageEvent onInvincibleTimeOut;
     #endregion
 
     #region Unity生命周期
@@ -43,6 +45,7 @@ public class Damageable : MonoBehaviour
             {
                 isInvicible = false;
                 invincibleTimer = 0;
+                onInvincibleTimeOut?.Invoke(this,null);
             }
         }
     }
