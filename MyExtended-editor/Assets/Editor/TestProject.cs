@@ -22,7 +22,7 @@ public class TestProject : MonoBehaviour
             if (Selection.activeObject != null)
             {
                 string assGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(Selection.activeObject));    //根据资源路径转换成GUID
-                if (assGuid == guid)//只在对应的选择后面绘制UI
+                if (assGuid == guid && !string.IsNullOrEmpty(assGuid))//只在对应的选择后面绘制UI
                 {
                     rect.x = rect.width - 100;
                     rect.width = 100;
