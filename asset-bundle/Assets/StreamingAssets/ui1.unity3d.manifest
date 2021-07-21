@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2576447667
+CRC: 964115005
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f9c7aa9febdf40a2bb0759f091a2b169
+    Hash: 8a99131d7531c7c80c5fd0daf7e7d1c1
   TypeTreeHash:
     serializedVersion: 2
     Hash: cbd1be63224e49654024b0a918df74b9
@@ -33,5 +33,5 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Prefab/Panel.prefab
+- Assets/Prefab/Panel1.prefab
 Dependencies: []

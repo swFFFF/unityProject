@@ -1,7 +1,13 @@
 ManifestFileVersion: 0
-CRC: 3538497752
+CRC: 526956239
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: ui.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: ui1.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: scenes.unity3d
       Dependencies: {}
