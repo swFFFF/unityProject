@@ -28,6 +28,11 @@ public class Damageable : MonoBehaviour
     public DamageEvent onDie;
     public DamageEvent onReset;
     public DamageEvent onInvincibleTimeOut;
+
+    public int CurrentHp
+    {
+        get { return hp; }
+    }
     #endregion
 
     #region Unity生命周期
