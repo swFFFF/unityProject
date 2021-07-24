@@ -35,11 +35,15 @@ public class PlayerController : MonoBehaviour
     public bool isCanAttack = false;
 
     public GameObject weapon;
+
+    public Vector3 respawnPosition;
     #endregion
 
     #region 常量
+    //
     private int QuickTurnLeftHash = Animator.StringToHash("EllenQuickTurnLeft");
     private int QuickTurnRightHash = Animator.StringToHash("EllenQuickTurnRight");
+    private int DeathHash = Animator.StringToHash("EllenDeath");
     #endregion
 
     #region Unity回调
@@ -160,6 +164,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsUpdateDirection()
     {
+        //用hash判断播放的动画
         bool isUpdate = currentStateInfo.shortNameHash != QuickTurnLeftHash && currentStateInfo.shortNameHash != QuickTurnRightHash;
         isUpdate = nextStateInfo.shortNameHash != QuickTurnLeftHash && nextStateInfo.shortNameHash != QuickTurnRightHash;
         return isUpdate;
@@ -195,6 +200,47 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("HurtX", localDirection.x);
         animator.SetFloat("HurtY", localDirection.z);
         animator.SetTrigger("hurt");
+    }
+
+    public void OnDeath(Damageable damageable, DamageMessage data)
+    {
+        animator.SetTrigger("death");
+        StartCoroutine(Respawn());
+    }
+
+    //重生
+    public IEnumerator Respawn()
+    {
+        //播放死亡动画 
+        while(currentStateInfo.shortNameHash != DeathHash)//等待死亡动画播放完毕
+        {
+            yield return null;
+        }
+        yield return null;
+
+        //黑屏
+        yield return StartCoroutine(BlackMaskView.Instance.FadeOut());//等待屏幕完全变黑再往下走
+
+        //重置角色位置
+        transform.position = respawnPosition;
+
+        //播放重生动画
+        animator.SetTrigger("respawn");
+        yield return new WaitForSeconds(1.0f);
+
+        //亮屏
+        yield return StartCoroutine(BlackMaskView.Instance.FadeIn());//等待屏幕完全变黑再往下走
+
+        //重置角色血量
+        transform.GetComponent<Damageable>().ResetDamage();
+
+        //赋予角色控制权
+        playerInput.GainControl();
+    }
+
+    public void SetRespawnPosition(Vector3 position)
+    {
+        respawnPosition = position;
     }
     #endregion
 

@@ -75,3 +75,11 @@ The following packages were added:
   com.unity.textmeshpro@2.1.4
   com.unity.timeline@1.2.18
   com.unity.ugui@1.0.0
+
+=== Sat Jul 24 11:17:43 2021
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were added:
+  com.unity.ide.visualstudio@2.0.8

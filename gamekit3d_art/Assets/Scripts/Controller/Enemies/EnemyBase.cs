@@ -98,8 +98,13 @@ public class EnemyBase : MonoBehaviour
 
             //判断是否在视野范围内
             if (Vector3.Angle(transform.forward, results[i].transform.position - transform.position) > lookAngle) { continue; }
-            //找到一个最近的攻击目标
 
+            //目标是否存活
+            if(!results[i].transform.GetComponent<Damageable>().isAlive)
+            {
+                continue;
+            }
+            //找到一个最近的攻击目标
             if (target != null)
             {
                 //判断距离
@@ -150,6 +155,13 @@ public class EnemyBase : MonoBehaviour
                     LoseTarget();
                     return;
                 }
+                //目标是否存活
+                if (!target.transform.GetComponent<Damageable>().isAlive)
+                {
+                    LoseTarget();
+                    return;
+                }
+
                 //是否再攻击范围内
                 if (Vector3.Distance(gameObject.transform.position, target.transform.position) <= attackDistance)
                 {

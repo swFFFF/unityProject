@@ -8,6 +8,10 @@ public class PlayerInput : MonoBehaviour
     {
         get
         {
+            if(!isCanControl)
+            {
+                 return Vector2.zero;
+            }
             return _move;
         }
     }
@@ -16,7 +20,8 @@ public class PlayerInput : MonoBehaviour
     {
         get
         {
-            return _jump;
+
+            return _jump && isCanControl;
         }
     }
 
@@ -24,17 +29,30 @@ public class PlayerInput : MonoBehaviour
     {
         get
         {
-            return _attack;
+            return _attack && isCanControl;
         }
     }
     private Vector2 _move;
     private bool _jump;
     private bool _attack;
 
+    private bool isCanControl = true;
     private void Update()
     {
         _move.Set(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         _jump = Input.GetButtonDown("Jump");
         _attack = Input.GetButtonDown("Fire1");
+    }
+
+    //获得控制
+    public void GainControl()
+    {
+        isCanControl = true;
+    }
+
+    //失去控制
+    public void ReleaseControl()
+    {
+        isCanControl = false;
     }
 }

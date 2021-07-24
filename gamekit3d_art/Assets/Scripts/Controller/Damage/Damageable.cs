@@ -33,6 +33,11 @@ public class Damageable : MonoBehaviour
     {
         get { return hp; }
     }
+
+    public bool isAlive
+    {
+        get { return CurrentHp > 0; }
+    }
     #endregion
 
     #region Unity生命周期
