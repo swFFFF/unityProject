@@ -19,6 +19,10 @@ public class Dissolve : MonoBehaviour
     private void Update()
     {
         dissolveTimer += Time.deltaTime;
+        if(dissolveTimer >= dissolveTime)
+        {
+            return;
+        }
         for(int i = 0; i < renderers.Length; i++)
         {
             //renderers[i].material.SetFloat("_Cutoff", dissolveTimer / dissolveTime);    //名字要设置成shader文件中的真实名。直接修改材质参数。需要注意其他应用场合。
@@ -26,5 +30,10 @@ public class Dissolve : MonoBehaviour
             propertyBlock.SetFloat("_Cutoff", dissolveTimer / dissolveTime);
             renderers[i].SetPropertyBlock(propertyBlock);
         }
+    }
+
+    private void OnEnable()
+    {
+        dissolveTimer = 0;
     }
 }

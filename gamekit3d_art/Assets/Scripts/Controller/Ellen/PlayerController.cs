@@ -226,6 +226,7 @@ public class PlayerController : MonoBehaviour
 
         //播放重生动画
         animator.SetTrigger("respawn");
+
         yield return new WaitForSeconds(1.0f);
 
         //亮屏
