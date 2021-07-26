@@ -20,6 +20,7 @@ public class WeaponAttackController : MonoBehaviour
     public int damage;
     public GameObject myself;
     private List<GameObject> attackList = new List<GameObject>();
+    public GameObject hitPrefab;
     #endregion
 
     #region Unity生命周期
@@ -70,27 +71,34 @@ public class WeaponAttackController : MonoBehaviour
             for (int j = 0; j < count; j++)
             {
                 //Debug.Log("检测到敌人 进行攻击：" + results[j].transform.name);
-                CheckDamage(results[j].transform.gameObject);
+                if(CheckDamage(results[j].transform.gameObject))
+                {
+                    if(hitPrefab != null)
+                    {
+                        GameObject hit = GameObject.Instantiate(hitPrefab);
+                        hit.transform.position = checkPoint[i].point.position;
+                    }
+                }
             }
         }
     }
 
     //造成伤害
-    public void CheckDamage(GameObject obj)
+    public bool CheckDamage(GameObject obj)
     {
         //判断游戏物体是不是可以受伤
         Damageable damageable = obj.GetComponent<Damageable>();
-        if (damageable == null) { return; }
+        if (damageable == null) { return false; }
 
         //检测到自己
         if (obj == myself)
         {
-            return;
+            return false;
         }
 
         if (attackList.Contains(obj))
         {
-            return;
+            return false;
         }
         //进行攻击
         DamageMessage data = new DamageMessage();
@@ -99,6 +107,7 @@ public class WeaponAttackController : MonoBehaviour
         damageable.OnDamage(data);
 
         attackList.Add(obj);
+        return true;
     }
     #endregion
 

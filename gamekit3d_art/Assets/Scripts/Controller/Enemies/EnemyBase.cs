@@ -7,6 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]    //使用本脚本自动添加相应组件
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Damageable))]
 public class EnemyBase : MonoBehaviour
 {
     #region 字段
@@ -127,7 +128,10 @@ public class EnemyBase : MonoBehaviour
     {
         if (target != null)
         {
-            meshAgent.SetDestination(target.transform.position);
+            if (transform.GetComponent<Damageable>().isAlive)
+            {
+                meshAgent.SetDestination(target.transform.position);
+            }
         }
     }
 
@@ -186,8 +190,11 @@ public class EnemyBase : MonoBehaviour
     {
         //目标丢失 回到初始位置
         target = null;
-        meshAgent.speed = walkSpeed;
-        meshAgent.SetDestination(startPosition);
+        if(transform.GetComponent<Damageable>().isAlive)
+        {
+            meshAgent.speed = walkSpeed;
+            meshAgent.SetDestination(startPosition);
+        }
     }
 
     //监听速度
@@ -203,6 +210,11 @@ public class EnemyBase : MonoBehaviour
     }
 
     public virtual void Attack()
+    {
+
+    }
+
+    public virtual void OnDeath(Damageable damageable, DamageMessage data)
     {
 
     }
