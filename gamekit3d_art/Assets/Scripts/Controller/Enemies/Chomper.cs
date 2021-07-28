@@ -7,6 +7,13 @@ using UnityEngine.AI;
 public class Chomper : EnemyBase
 {
     public WeaponAttackController weaponAttackController;
+
+    protected override void Start()
+    {
+        base.Start();
+        animator.Play("ChomperIdle", 0, UnityEngine.Random.Range(0.0f,1.0f));
+    }
+
     public override void Attack()
     {
         ChangeDirection();
