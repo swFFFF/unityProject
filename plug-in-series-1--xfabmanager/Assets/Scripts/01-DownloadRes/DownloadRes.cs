@@ -19,9 +19,6 @@ public class DownloadRes : MonoBehaviour
 
         Debug.Log("обтьмЙЁи!");
         Debug.Log(Application.persistentDataPath);
-        // 
-        
-
     }
 
      
