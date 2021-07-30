@@ -15,14 +15,14 @@ public enum PageScrollType
 public class PageScrollView : MonoBehaviour, IEndDragHandler, IBeginDragHandler
 {
     #region 字段
-    ScrollRect rect;
-    private int pageCount;
+    protected ScrollRect rect;
+    protected int pageCount;
     private RectTransform content;
-    private float[] pages;
+    protected float[] pages;
     public float moveTime = 0.3f;
     private float timer = 0;
     private float startMovePos;
-    private int curPage = 0;
+    protected int curPage = 0;
     private bool isMoving = false;
     /// <summary>
     /// 是否开启自动滚动
@@ -41,12 +41,12 @@ public class PageScrollView : MonoBehaviour, IEndDragHandler, IBeginDragHandler
 
     #region Unity回调
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         Init();
     }
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         ListenerMove();
         ListenerAutoScroll();
