@@ -24,6 +24,6 @@ public class InteractTriggerListener : MonoBehaviour
         {
             onExit?.Invoke();
         }
-       
+        
     }
 }

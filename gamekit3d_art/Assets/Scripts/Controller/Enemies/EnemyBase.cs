@@ -44,7 +44,18 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
-
+        if(target != null && target.GetComponent<PlayerInput>() != null)
+        {
+            if(target.GetComponent<PlayerInput>().IsHaveControl() == false && target.GetComponent<Damageable>().isAlive)
+            {
+                animator.speed = 0;
+                return;
+            }
+            else
+            {
+                animator.speed = 1;
+            }
+        }
         CheckTarget();
         FollowTarget();
 
