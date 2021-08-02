@@ -42,7 +42,7 @@ public class Chomper : EnemyBase
         weaponAttackController.EndAttack();
     }
 
-    public void OnDeath(Damageable damageable, DamageMessage data)
+    public override void OnDeath(Damageable damageable, DamageMessage data)
     {
         base.OnDeath(damageable, data);
 

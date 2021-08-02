@@ -55,4 +55,10 @@ public class PlayerInput : MonoBehaviour
     {
         isCanControl = false;
     }
+
+    //是否有控制权
+    public bool IsHaveControl()
+    {
+        return isCanControl;
+    }
 }

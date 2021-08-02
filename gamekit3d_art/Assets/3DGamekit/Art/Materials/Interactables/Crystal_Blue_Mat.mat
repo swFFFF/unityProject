@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Crystal_Blue_Mat
   m_Shader: {fileID: 4800000, guid: 507830799f98b934b966a82289413a43, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP
@@ -91,9 +92,9 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _glowFrequency: 1
-    - _glowMax: 50
-    - _glowMin: 30
+    - _glowFrequency: 1.84
+    - _glowMax: 2
+    - _glowMin: 0
     - _marchDistance: 0.85
     - _numSteps: 5.25
     m_Colors:
