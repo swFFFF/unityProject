@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
     public DoorStatus doorStatus = DoorStatus.Close;
 
     public int keyNum = 1;  //需要要是的数量
-    private int curKeyNum = 0;
+    public int curKeyNum = 0;
     public UnityEvent onOpen;
     public UnityEvent onClose;
 
