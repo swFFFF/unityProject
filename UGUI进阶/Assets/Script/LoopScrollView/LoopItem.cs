@@ -23,6 +23,9 @@ public class LoopItem : MonoBehaviour
     {
         itemRect = transform.GetComponent<RectTransform>();
         viewRect = transform.GetComponentInParent<ScrollRect>().GetComponent<RectTransform>();
+        //初始化数组
+        rectCorners = new Vector3[4];
+        viewCorners = new Vector3[4];
     }
 
     void Update()
@@ -87,7 +90,7 @@ public class LoopItem : MonoBehaviour
         {
             if(transform.parent.GetChild(i).gameObject.activeSelf)
             {
-                if(transform.GetChild(i) == transform)
+                if(transform.parent.GetChild(i) == transform)
                 {
                     return true;
                 }
@@ -99,11 +102,11 @@ public class LoopItem : MonoBehaviour
 
     public bool IsLast()
     {
-        for (int i = transform.parent.childCount; i >= 0; i--)
+        for (int i = transform.parent.childCount - 1; i >= 0; i--)
         {
             if (transform.parent.GetChild(i).gameObject.activeSelf)
             {
-                if (transform.GetChild(i) == transform)
+                if (transform.parent.GetChild(i) == transform)
                 {
                     return true;
                 }
