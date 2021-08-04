@@ -28,6 +28,8 @@ public class Grenadier : EnemyBase
             currentAnimatorInfo.shortNameHash == closeRangeAttackHash)
         {
             animator.ResetTrigger("attack_long");
+            animator.ResetTrigger("attack_range");
+            animator.ResetTrigger("attack_short");
             return;
         }
 
