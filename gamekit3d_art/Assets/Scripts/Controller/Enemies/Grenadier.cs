@@ -13,6 +13,9 @@ public class Grenadier : EnemyBase
 
     private AnimatorStateInfo currentAnimatorInfo;  //当前动画信息
 
+    public GameObject bossBulletPrefab;     //boss子弹预制体
+    public Transform ShootPosition;         //发射点
+
     protected override void Update()
     {
         base.Update();
@@ -73,6 +76,17 @@ public class Grenadier : EnemyBase
         {
             animator.SetFloat("TurnAngle", angle);
             animator.SetTrigger("turn");
+        }
+    }
+
+    //射击事件
+    public void Shoot()
+    {
+        if(target != null)
+        {
+            GameObject bullet = GameObject.Instantiate(bossBulletPrefab);
+            bullet.transform.position = ShootPosition.position;
+            bullet.GetComponent<BossBullet>().Shoot(target.transform.position, transform.forward);
         }
     }
 }
