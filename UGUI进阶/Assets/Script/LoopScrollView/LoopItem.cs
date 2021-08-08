@@ -7,10 +7,14 @@ using UnityEngine.UI;
 //处理item内部逻辑
 public class LoopItem : MonoBehaviour
 {
+    #region 字段
     private RectTransform itemRect;
     private RectTransform viewRect;
     private Vector3[] rectCorners;
     private Vector3[] viewCorners;
+
+    private LoopScrollViewType scrollViewType;
+    #endregion
 
     #region 事件
     // Action 回调一对一
@@ -43,43 +47,96 @@ public class LoopItem : MonoBehaviour
 
         if(IsFirst())
         {
-            if (rectCorners[0].y > viewCorners[1].y)
+            switch (scrollViewType)
             {
-                //隐藏并销毁头节点
-                if(onRemoveHead != null)
-                {
-                    onRemoveHead();//委托事件
-                }    
+                case LoopScrollViewType.Horizontal:
+                    if (rectCorners[3].x < viewCorners[0].x)
+                    {
+                        //隐藏并销毁头节点
+                        if (onRemoveHead != null)
+                        {
+                            onRemoveHead();//委托事件
+                        }
+                    }
+
+                    if (rectCorners[0].x > viewCorners[0].x)
+                    {
+                        //添加并显示头结点
+                        if (onAddHead != null)
+                        {
+                            onAddHead();
+                        }
+                    }
+                    break;
+                case LoopScrollViewType.Vertical:
+                    if (rectCorners[0].y > viewCorners[1].y)
+                    {
+                        //隐藏并销毁头节点
+                        if (onRemoveHead != null)
+                        {
+                            onRemoveHead();//委托事件
+                        }
+                    }
+
+                    if (rectCorners[1].y < viewCorners[1].y)
+                    {
+                        //添加并显示头结点
+                        if (onAddHead != null)
+                        {
+                            onAddHead();
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
 
-            if (rectCorners[1].y < viewCorners[1].y)
-            {
-                //添加并显示头结点
-                if(onAddHead != null)
-                {
-                    onAddHead();
-                }
-            }
         }
 
         if(IsLast())
         {
-            if (rectCorners[1].y > viewCorners[0].y)
+            switch (scrollViewType)
             {
-                //添加并显示尾节点
-                if (onAddLast != null)
-                {
-                    onAddLast();
-                }
-            }
+                case LoopScrollViewType.Horizontal:
+                    if (rectCorners[3].x < viewCorners[3].x)
+                    {
+                        //添加并显示尾节点
+                        if (onAddLast != null)
+                        {
+                            onAddLast();
+                        }
+                    }
 
-            if (rectCorners[1].y < viewCorners[0].y)
-            {
-                //隐藏并销毁尾节点
-                if(onRemoveLast != null)
-                {
-                    onRemoveLast();
-                }    
+                    if (rectCorners[0].x > viewCorners[3].x)
+                    {
+                        //隐藏并销毁尾节点
+                        if (onRemoveLast != null)
+                        {
+                            onRemoveLast();
+                        }
+                    }
+                    break;
+                case LoopScrollViewType.Vertical:
+                    if (rectCorners[1].y > viewCorners[0].y)
+                    {
+                        //添加并显示尾节点
+                        if (onAddLast != null)
+                        {
+                            onAddLast();
+                        }
+                    }
+
+                    if (rectCorners[1].y < viewCorners[0].y)
+                    {
+                        //隐藏并销毁尾节点
+                        if (onRemoveLast != null)
+                        {
+                            onRemoveLast();
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }
@@ -114,5 +171,11 @@ public class LoopItem : MonoBehaviour
             }
         }
         return false;
+    }
+
+    //设置LoopScrollView类型
+    public void SetLoopScrollViewType(LoopScrollViewType loopScrollViewType)
+    {
+        this.scrollViewType = loopScrollViewType;
     }
 }
