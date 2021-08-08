@@ -4787,6 +4787,7 @@ GameObject:
   - component: {fileID: 3755925422350228191}
   - component: {fileID: 8418640067857560958}
   - component: {fileID: 8902349647717191085}
+  - component: {fileID: 484507283}
   m_Layer: 23
   m_Name: BossBullet
   m_TagString: Untagged
@@ -4838,6 +4839,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 3
+  explosionEffect: {fileID: 1409670028021530, guid: 89e3e5a35c1a5aa4c8d41fa55f438def,
+    type: 3}
+--- !u!114 &484507283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3755925422350228190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7528ae0942cbcd8478c47aff7ca8a13b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPoint:
+  - point: {fileID: 3755925422350228191}
+    radius: 3
+  color: {r: 1, g: 0, b: 0, a: 0.5254902}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  isAttack: 0
+  damage: 1
+  myself: {fileID: 3755925422350228190}
+  hitPrefab: {fileID: 0}
 --- !u!1 &3755925422678951121
 GameObject:
   m_ObjectHideFlags: 0

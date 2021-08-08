@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
 public class DamageMessage
 {
     public int damage;//伤害
-    public Vector3 damagePosition;
+    public Vector3 damagePosition;  //伤害来源位置
+    public bool isResetPosition;    //是否需要重置位置
 }
 [Serializable]
 public class DamageEvent:UnityEvent<Damageable, DamageMessage>

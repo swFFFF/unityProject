@@ -6,6 +6,7 @@ public class BossBullet : MonoBehaviour
 {
     Rigidbody rigidbody;
     public float time;
+    public GameObject explosionEffect;
     private void Awake()
     {
         rigidbody = transform.GetComponent<Rigidbody>();
@@ -13,6 +14,7 @@ public class BossBullet : MonoBehaviour
 
     public void Shoot(Vector3 target, Vector3 direction)
     {
+        transform.SetParent(null);
         rigidbody.isKinematic = false;
         Vector3 toTarget = target - transform.position;
         toTarget.y = 0;
@@ -24,7 +26,20 @@ public class BossBullet : MonoBehaviour
     public void Attack()
     {
         //爆炸
-
+        Explositon();
         //攻击
+        transform.GetComponent<WeaponAttackController>().StartAttack();
+    }
+
+    public void Explositon()
+    {
+        if(explosionEffect != null)
+        {
+            GameObject explosion = GameObject.Instantiate(explosionEffect);
+            explosion.transform.position = transform.position;
+            Destroy(explosion, 2);
+        }
+
+        Destroy(gameObject, 0.2f);
     }
 }

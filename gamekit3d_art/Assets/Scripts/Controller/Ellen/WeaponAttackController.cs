@@ -16,7 +16,7 @@ public class WeaponAttackController : MonoBehaviour
     public Color color;
     private RaycastHit[] results = new RaycastHit[10];
     public LayerMask layerMask;
-    public bool isAttack;
+    private bool isAttack;
     public int damage;
     public GameObject myself;
     private List<GameObject> attackList = new List<GameObject>();
@@ -41,8 +41,16 @@ public class WeaponAttackController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if(checkPoint == null)
+        {
+            return;
+        }
         for (int i = 0; i < checkPoint.Length; i++)
         {
+            if(checkPoint[i] == null)
+            {
+                return;
+            }
             Gizmos.color = color;
             Gizmos.DrawSphere(checkPoint[i].point.position, checkPoint[i].radius);
         }
@@ -77,6 +85,7 @@ public class WeaponAttackController : MonoBehaviour
                     {
                         GameObject hit = GameObject.Instantiate(hitPrefab);
                         hit.transform.position = checkPoint[i].point.position;
+                        Destroy(hit, 2);
                     }
                 }
             }

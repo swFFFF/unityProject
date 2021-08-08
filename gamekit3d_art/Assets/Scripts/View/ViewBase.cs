@@ -13,4 +13,9 @@ public class ViewBase : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public virtual void Close()
+    {
+        Destroy(gameObject);
+    }
 }

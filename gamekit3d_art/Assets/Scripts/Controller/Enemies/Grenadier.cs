@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Grenadier : EnemyBase
 {
+    #region 字段
     public float shortAttackDistance;
 
     //获取动画哈希值
@@ -15,13 +16,26 @@ public class Grenadier : EnemyBase
 
     public GameObject bossBulletPrefab;     //boss子弹预制体
     public Transform ShootPosition;         //发射点
+    private BossBullet bossBullet;          //boss当前持有的子弹
 
+    public WeaponAttackController meleeAttackController;
+    public WeaponAttackController rangeAttackController;
+    private GameObject shield;
+    #endregion
+
+    #region Unity生命周期
+    private void Awake()
+    {
+        shield = transform.Find("Shield").gameObject;
+    }
     protected override void Update()
     {
         base.Update();
         currentAnimatorInfo = animator.GetCurrentAnimatorStateInfo(0);
     }
+    #endregion
 
+    #region 方法
     public override void Attack()
     {
         base.Attack();
@@ -79,14 +93,73 @@ public class Grenadier : EnemyBase
         }
     }
 
-    //射击事件
+    //创建子弹
+    public void CreateBullte()
+    {
+        GameObject bullet = GameObject.Instantiate(bossBulletPrefab, ShootPosition);
+        bullet.transform.localPosition = Vector3.zero;
+        bossBullet = bullet.GetComponent<BossBullet>();
+    }
+
+    //射击
     public void Shoot()
     {
         if(target != null)
         {
-            GameObject bullet = GameObject.Instantiate(bossBulletPrefab);
-            bullet.transform.position = ShootPosition.position;
-            bullet.GetComponent<BossBullet>().Shoot(target.transform.position, transform.forward);
+            //GameObject bullet = GameObject.Instantiate(bossBulletPrefab);
+            //bullet.transform.position = ShootPosition.position;
+            bossBullet.Shoot(target.transform.position, transform.forward);
         }
+        else 
+        {
+            Destroy(bossBullet.gameObject);
+        }
+        bossBullet = null;
     }
+    
+    public override void OnDeath(Damageable damageable, DamageMessage data)
+    {
+        base.OnDeath(damageable, data);
+        animator.SetTrigger("die");
+
+        Destroy(gameObject, 8);
+    }
+
+    #endregion
+
+    #region 动画事件
+    public void MeleeAttackStart()
+    {
+        meleeAttackController.StartAttack();
+    }
+    public void MeleeAttackEnd()
+    {
+        meleeAttackController.EndAttack();
+    }
+
+    public void RangeAttackStart()
+    {
+        rangeAttackController.StartAttack();
+        
+        if(shield !=null)
+        {
+            shield.SetActive(false);
+            shield.SetActive(true);
+        }
+
+    }
+
+    public void RangeAttackEnd()
+    {
+        rangeAttackController.EndAttack();
+        shield.SetActive(false);
+    }
+
+    public void RangeAttackBegin()
+    {
+        GameObject charge = transform.Find("GrenadierSkeleton/Grenadier_Root/Grenadier_Hips/Grenadier_Sphere/Charge").gameObject;
+        charge.SetActive(false);
+        charge.SetActive(true);
+    }
+    #endregion
 }

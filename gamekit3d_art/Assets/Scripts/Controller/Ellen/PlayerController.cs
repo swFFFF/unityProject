@@ -197,9 +197,24 @@ public class PlayerController : MonoBehaviour
         direction.y = 0;
 
         Vector3 localDirection = transform.InverseTransformDirection(direction); //转换成角色的局部方向
-        animator.SetFloat("HurtX", localDirection.x);
-        animator.SetFloat("HurtY", localDirection.z);
-        animator.SetTrigger("hurt");
+
+        //是否需要重置位置
+        if (data.isResetPosition)
+        {
+            //失去控制
+            playerInput.ReleaseControl();
+            //播放死亡动画
+            animator.SetTrigger("death");
+            //重置位置
+            StartCoroutine(ResetPosition());
+        }
+        else
+        {
+            //播放受伤动画
+            animator.SetFloat("HurtX", localDirection.x);
+            animator.SetFloat("HurtY", localDirection.z);
+            animator.SetTrigger("hurt");
+        }
     }
 
     public void OnDeath(Damageable damageable, DamageMessage data)
@@ -208,11 +223,11 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Respawn());
     }
 
-    //重生
-    public IEnumerator Respawn()
+    //重置位置
+    public IEnumerator ResetPosition()
     {
         //播放死亡动画 
-        while(currentStateInfo.shortNameHash != DeathHash)//等待死亡动画播放完毕
+        while (currentStateInfo.shortNameHash != DeathHash)//等待死亡动画播放完毕
         {
             yield return null;
         }
@@ -232,6 +247,16 @@ public class PlayerController : MonoBehaviour
         //亮屏
         yield return StartCoroutine(BlackMaskView.Instance.FadeIn());//等待屏幕完全变黑再往下走
 
+
+        //赋予角色控制权
+        playerInput.GainControl();
+        yield return null;
+    }
+
+    //重生
+    public IEnumerator Respawn()
+    {
+        yield return ResetPosition();
         //重置角色血量
         transform.GetComponent<Damageable>().ResetDamage();
 
