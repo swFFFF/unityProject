@@ -2,46 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataAdaptor<T>
+public class DataAdaptor : ILoopDataAdaptor
 {
     //default 数值类型返回0 引用类型返回null
     #region 字段
     //保存所有数据
-    public List<T> allData = new List<T>();
+    public List<object> allData = new List<object>();
     //当前显示数据
-    public LinkedList<T> currentShowData = new LinkedList<T>();
+    public LinkedList<object> currentShowData = new LinkedList<object>();
     #endregion
 
     #region 方法
     //添加currentShowData 第一个数据
-    public T GetHeadData()
+    public object GetHeadData()
     {
         //总数据为空
         if(allData.Count == 0)
         {
-            return default(T);
+            return null;
         }
         //当前没有显示数据 特殊情况
         if(currentShowData.Count == 0)
         {
-            T head = allData[0];
+            object head = allData[0];
             currentShowData.AddFirst(head);
             return head;
         }
 
         //获取当前显示第一个数据
-        T t = currentShowData.First.Value;
+        object t = currentShowData.First.Value;
         //找到数据的下标第一个数据在所有数据中的下标
         int index = allData.IndexOf(t);
         if(index != 0)
         {
             //获取头数据的上一个数据
-            T header = allData[index - 1];
+            object header = allData[index - 1];
             //加入当前显示数据里
             currentShowData.AddFirst(header);
             return header;
         }
-        return default(T);
+        return null;
     }
 
     //移除currentShowData 第一个数据
@@ -56,33 +56,33 @@ public class DataAdaptor<T>
     }
 
     //添加currentShowData 最后一个数据
-    public T GetLastData()
+    public object GetLastData()
     {
         //总数据为空
         if (allData.Count == 0)
         {
-            return default(T);
+            return null;
         }
         //当前没有显示数据 特殊情况
         if (currentShowData.Count == 0)
         {
-            T las = allData[0];
+            object las = allData[0];
             currentShowData.AddLast(las);
             return las;
         }
 
         //显示数据中的最后一个数据
-        T last = currentShowData.Last.Value;
+        object last = currentShowData.Last.Value;
         //最后一个数据下标
         int index = allData.IndexOf(last);
         //还未显示到最后一个数据
         if (index != allData.Count - 1)
         {
-            T now_last = allData[index + 1];
+            object now_last = allData[index + 1];
             currentShowData.AddLast(now_last);
             return now_last;
         }    
-        return default(T);
+        return null;
     }
 
     //移除currentShowData 最后一个数据
@@ -99,7 +99,7 @@ public class DataAdaptor<T>
     #endregion
 
     #region 数据管理
-    public void InitData(T[] t)
+    public void InitData(object[] t)
     {
         //情况容器
         allData.Clear();
@@ -108,17 +108,17 @@ public class DataAdaptor<T>
         allData.AddRange(t);
     }
 
-    public void InitData(List<T> t)
+    public void InitData(List<object> t)
     {
         InitData(t.ToArray());
     }
 
-    public void AddData(T[] t)
+    public void AddData(object[] t)
     {
         allData.AddRange(t);
     }
 
-    public void AddData(List<T> t)
+    public void AddData(List<object> t)
     {
         AddData(t.ToArray());
     }
