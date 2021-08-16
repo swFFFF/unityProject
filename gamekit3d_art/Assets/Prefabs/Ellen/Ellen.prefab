@@ -381,7 +381,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 276824064
-  isAttack: 0
   damage: 1
   myself: {fileID: 6136805878675490467}
   hitPrefab: {fileID: 1091566395842728, guid: 400e06051701a8c4998087ae421728e3, type: 3}
@@ -520,7 +519,7 @@ CharacterController:
   m_Radius: 0.24
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.83, z: 0}
 --- !u!114 &6136805878296694328
@@ -535,13 +534,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffc72f5e7256cc4797f1a0087d85313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 5
+  maxMoveSpeed: 7
   moveSpeed: 5
-  jumpSpeed: 10
+  jumpSpeed: 15
   gravity: 20
   isGrounded: 1
   renderCamera: {fileID: 0}
-  acceleratedSpeed: 5
+  acceleratedSpeed: 10
   isCanAttack: 1
   weapon: {fileID: 6136805878030832770}
   respawnPosition: {x: 0, y: 0, z: 0}

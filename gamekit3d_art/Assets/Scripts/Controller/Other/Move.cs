@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+//物体移动
 public enum MoveType 
 {
     Once,

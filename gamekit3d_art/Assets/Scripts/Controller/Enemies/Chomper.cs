@@ -32,12 +32,12 @@ public class Chomper : EnemyBase
         }
     }
 
-    public void AttackBegin()
+    public virtual void AttackBegin()
     {
         weaponAttackController.StartAttack();
     }
 
-    public void AttackEnd()
+    public virtual void AttackEnd()
     {
         weaponAttackController.EndAttack();
     }
