@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum LoopScrollViewType 
+public enum LoopScrollViewType
 {
     Horizontal,
     Vertical,
@@ -21,7 +22,13 @@ public class LoopScrollView : MonoBehaviour
 
     private ContentSizeFitter sizeFitter;
     private RectTransform content;
-    public DataAdaptor<LoopDataItem> dataAdaptor;
+    //接口对象
+    public ILoopDataAdaptor dataAdaptor;
+    public ISetLoopItemData setLoopItemData;
+    #endregion
+
+    #region 事件
+    public Action onMoveDataEnd;
     #endregion
 
     #region Unity回调
@@ -29,20 +36,10 @@ public class LoopScrollView : MonoBehaviour
     {
         Init();
     }
-
-    private void Start()
-    {
-        contentLayoutGroup.enabled = true;
-        sizeFitter.enabled = true;
-        //添加一个子节点
-        OnAddHead();
-        //禁用
-        Invoke("EnableFalseGrid", 0.1f);
-    }
     #endregion
 
     #region 方法
-    public void Init()
+    private void Init()
     {
         content = transform.Find("Viewport/Content").GetComponent<RectTransform>();
         if (content == null)
@@ -50,7 +47,7 @@ public class LoopScrollView : MonoBehaviour
             throw new System.Exception("找不到content");
         }
         contentLayoutGroup = content.GetComponentInParent<GridLayoutGroup>();
-        if(contentLayoutGroup == null)
+        if (contentLayoutGroup == null)
         {
             throw new System.Exception("找不到GridLayoutGroup");
         }
@@ -59,22 +56,62 @@ public class LoopScrollView : MonoBehaviour
         {
             throw new System.Exception("找不到ContentSizeFitter");
         }
-        dataAdaptor = new DataAdaptor<LoopDataItem>();
-        //---------------------------------------
-        List<LoopDataItem> loopDataItems = new List<LoopDataItem>();
-        for (int i = 0; i < 100; i++)
+
+        //优先从自身获取
+        dataAdaptor = transform.GetComponent<ILoopDataAdaptor>();
+        if (dataAdaptor == null)
         {
-            loopDataItems.Add(new LoopDataItem(i));
+            //如果没有获取到 使用默认数据
+            dataAdaptor = new DataAdaptor();
         }
-        dataAdaptor.InitData(loopDataItems);
+
+        setLoopItemData = transform.GetComponent<ISetLoopItemData>();
+        if(setLoopItemData == null)
+        {
+            throw new System.Exception("未实现 设置数据接口");
+        }
+        //-----------------测试数据--------------
+        //List<LoopDataItem> loopDataItems = new List<LoopDataItem>();
+        //for (int i = 0; i < 100; i++)
+        //{
+        //    loopDataItems.Add(new LoopDataItem(i));
+        //}
+        //dataAdaptor.InitData(loopDataItems.ToArray());
         //------------------------------------------
     }
 
+    //初始化数据
+    public void InitData(object[] datas, GameObject childItem)
+    {
+        if(childItem != null)
+        {
+            this.childItemPrefab = childItem;
+        }
+        contentLayoutGroup.enabled = true;
+        sizeFitter.enabled = true;
+        //隐藏所有子节点
+        HideAllChild();
+
+        //初始化数据
+        dataAdaptor.InitData(datas);
+
+        //添加一个子节点
+        OnAddHead();
+        //禁用
+        Invoke("EnableFalseGrid", 0.1f);
+    }
+
+    //添加数据
+    public void AddData(object[] datas)
+    {
+        dataAdaptor.AddData(datas);
+    }
+
     //获取一个子节点
-    public GameObject GetChildItem()
+    private GameObject GetChildItem()
     {
         //查找需要回收的子节点
-        for (int i = 0; i < content.childCount; i++) 
+        for (int i = 0; i < content.childCount; i++)
         {
             if (!content.GetChild(i).gameObject.activeSelf) //item不可见
             {
@@ -107,21 +144,21 @@ public class LoopScrollView : MonoBehaviour
     }
 
     //在上面再添加一个物体
-    public void OnAddHead()
+    private void OnAddHead()
     {
-        LoopDataItem loopDataItem = dataAdaptor.GetHeadData();
-        if(loopDataItem !=null)
+        object loopDataItem = dataAdaptor.GetHeadData();
+        if (loopDataItem != null)
         {
             Transform first = FindFirst();
 
             GameObject gameObject = GetChildItem();
             gameObject.transform.SetAsFirstSibling();
             //设置数据
-            SetData(gameObject, loopDataItem);
+            setLoopItemData.SetData(gameObject, loopDataItem);
             //动态的设置位置
             if (first != null)
             {
-                switch(scrollViewType)
+                switch (scrollViewType)
                 {
                     case LoopScrollViewType.Horizontal:
                         gameObject.transform.localPosition = first.localPosition - new Vector3(contentLayoutGroup.cellSize.x + contentLayoutGroup.spacing.x, 0, 0);
@@ -132,15 +169,15 @@ public class LoopScrollView : MonoBehaviour
                     default:
                         break;
                 }
-               
+
             }
         }
     }
 
     //移除顶部物体
-    public void OnRemoveHead()
+    private void OnRemoveHead()
     {
-        if(dataAdaptor.RemoveHeadData())
+        if (dataAdaptor.RemoveHeadData())
         {
             Transform first = FindFirst();
             if (first != null)
@@ -152,19 +189,19 @@ public class LoopScrollView : MonoBehaviour
     }
 
     //添加底部物体
-    public void OnAddLast()
+    private void OnAddLast()
     {
-        LoopDataItem loopDataItem = dataAdaptor.GetLastData();
-        if(loopDataItem != null)
+        object loopDataItem = dataAdaptor.GetLastData();
+        if (loopDataItem != null)
         {
             Transform last = FindLast();
 
             GameObject gameObject = GetChildItem();
             gameObject.transform.SetAsLastSibling();
             //设置数据
-            SetData(gameObject, loopDataItem);
+            setLoopItemData.SetData(gameObject, loopDataItem);
 
-            switch(scrollViewType)
+            switch (scrollViewType)
             {
                 case LoopScrollViewType.Horizontal:
                     //动态的设置位置
@@ -195,14 +232,21 @@ public class LoopScrollView : MonoBehaviour
                 default:
                     break;
             }
-
+        }
+        else
+        {
+            //没有找到数据
+            if(onMoveDataEnd != null)
+            {
+                onMoveDataEnd();
+            }
         }
     }
 
     //删除底部物体
-    public void OnRemoveLast()
+    private void OnRemoveLast()
     {
-        if(dataAdaptor.RemoveLastData())
+        if (dataAdaptor.RemoveLastData())
         {
             Transform last = FindLast();
             if (last != null)
@@ -212,11 +256,11 @@ public class LoopScrollView : MonoBehaviour
         }
     }
 
-    public Transform FindFirst()
+    private Transform FindFirst()
     {
-        for(int i = 0; i < content.childCount; i++)
+        for (int i = 0; i < content.childCount; i++)
         {
-            if( content.GetChild(i).gameObject.activeSelf)
+            if (content.GetChild(i).gameObject.activeSelf)
             {
                 return content.GetChild(i);
             }
@@ -224,11 +268,11 @@ public class LoopScrollView : MonoBehaviour
         return null;
     }
 
-    public Transform FindLast()
+    private Transform FindLast()
     {
-        for (int i = content.childCount - 1; i >= 0; i--) 
+        for (int i = content.childCount - 1; i >= 0; i--)
         {
-            if(content.GetChild(i).gameObject.activeSelf)
+            if (content.GetChild(i).gameObject.activeSelf)
             {
                 return content.GetChild(i);
             }
@@ -236,14 +280,14 @@ public class LoopScrollView : MonoBehaviour
         return null;
     }
 
-    public void EnableFalseGrid()
+    private void EnableFalseGrid()
     {
         contentLayoutGroup.enabled = false;
         sizeFitter.enabled = false;
     }
 
     //是否要增加content高度
-    public bool IsNeedAddContentHeight(Transform trans)
+    private bool IsNeedAddContentHeight(Transform trans)
     {
         Vector3[] rectCorners = new Vector3[4];
         Vector3[] contentCorners = new Vector3[4];
@@ -272,9 +316,18 @@ public class LoopScrollView : MonoBehaviour
 
     }
 
-    public void SetData(GameObject childItem, LoopDataItem data)
+    //public void SetData(GameObject childItem, object data)
+    //{
+    //    childItem.transform.Find("Text").GetComponent<Text>().text = ((LoopDataItem)data).id.ToString();
+    //}
+
+    //隐藏所有子节点 （回收所有子节点）
+    private void HideAllChild()
     {
-        childItem.transform.Find("Text").GetComponent<Text>().text = data.id.ToString();
+        for(int i =0; i < content.childCount; i++)
+        {
+            content.GetChild(i).gameObject.SetActive(false);
+        }
     }
     #endregion
 }
