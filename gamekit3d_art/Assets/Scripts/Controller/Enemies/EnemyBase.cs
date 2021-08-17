@@ -31,6 +31,7 @@ public class EnemyBase : MonoBehaviour
     protected bool isCanAttack;
     public float attackCooldownTime;    //攻击冷却时间
     protected float attackCooldownTimer;    //冷却倒计时
+    protected Damageable damageable;
     #endregion
 
     #region Unity生命週期
@@ -40,13 +41,18 @@ public class EnemyBase : MonoBehaviour
         startPosition = transform.position;
         animator = transform.GetComponent<Animator>();
         myRigidbody = transform.GetComponent<Rigidbody>();
+        damageable = transform.GetComponent<Damageable>();
     }
 
     protected virtual void Update()
     {
-        if(target != null && target.GetComponent<PlayerInput>() != null)
+        if(!damageable.isAlive)
         {
-            if(target.GetComponent<PlayerInput>().IsHaveControl() == false && target.GetComponent<Damageable>().isAlive)
+            return;
+        }
+        if (target != null && target.GetComponent<PlayerInput>() != null)
+        {
+            if (target.GetComponent<PlayerInput>().IsHaveControl() == false && target.GetComponent<Damageable>().isAlive)
             {
                 animator.speed = 0;
                 return;
@@ -56,13 +62,14 @@ public class EnemyBase : MonoBehaviour
                 animator.speed = 1;
             }
         }
+
         CheckTarget();
         FollowTarget();
 
         if (!isCanAttack)
         {
             attackCooldownTimer += Time.deltaTime;
-            if(attackCooldownTimer >= attackCooldownTime)
+            if (attackCooldownTimer >= attackCooldownTime)
             {
                 isCanAttack = true;
                 attackCooldownTimer = 0;
@@ -112,7 +119,7 @@ public class EnemyBase : MonoBehaviour
             if (Vector3.Angle(transform.forward, results[i].transform.position - transform.position) > lookAngle) { continue; }
 
             //目标是否存活
-            if(!results[i].transform.GetComponent<Damageable>().isAlive)
+            if (!results[i].transform.GetComponent<Damageable>().isAlive)
             {
                 continue;
             }
@@ -180,7 +187,7 @@ public class EnemyBase : MonoBehaviour
                 //是否再攻击范围内
                 if (Vector3.Distance(gameObject.transform.position, target.transform.position) <= attackDistance)
                 {
-                    if(isCanAttack)
+                    if (isCanAttack)
                     {
                         Attack();
                         isCanAttack = false;
@@ -201,7 +208,7 @@ public class EnemyBase : MonoBehaviour
     {
         //目标丢失 回到初始位置
         target = null;
-        if(transform.GetComponent<Damageable>().isAlive)
+        if (transform.GetComponent<Damageable>().isAlive)
         {
             meshAgent.speed = walkSpeed;
             meshAgent.SetDestination(startPosition);
