@@ -8,6 +8,7 @@ public class Spitter : Chomper
 {
     //逃跑距离
     public float escapeDistance;
+    public GameObject bulletPrefab;
     public override void FollowTarget()
     {
         ListenerSpeed();
@@ -83,8 +84,11 @@ public class Spitter : Chomper
     public override void AttackBegin()
     {
         //base.AttackBegin();
+        GameObject b = GameObject.Instantiate(bulletPrefab);
+        b.transform.position = transform.Find("BulletPos").position;
+        b.GetComponent<Bullet>().Shoot(target.transform.position, transform.forward);
     }
-
+    
     public override void AttackEnd()
     {
         //base.AttackEnd();
