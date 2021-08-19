@@ -19,8 +19,8 @@ namespace Gamekit3D.GameCommands
                 rigidbody.transform.position = pos;
             rigidbody.MovePosition(pos);
 
-            if (m_Platform != null)
-                m_Platform.MoveCharacterController(deltaPosition);
+            if (m_Platform != null) ;
+                //m_Platform.MoveCharacterController(deltaPosition);
         }
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6974440173492581229}
   - component: {fileID: 6974440173492581230}
   - component: {fileID: 5891669891162439930}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Acid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6974440173492581231}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.7512007, y: -3.089383, z: 0.9647522}
-  m_LocalScale: {x: 2.1243126, y: 1, z: 2.3117552}
+  m_LocalScale: {x: 5.4413176, y: 1, z: 4.6845827}
   m_Children:
   - {fileID: 8486039431660305912}
   m_Father: {fileID: 0}
@@ -177,10 +177,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7563925821481589272, guid: 7ee21df33656d7747879d5eed2b9fb70,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 7565572236115410214, guid: 7ee21df33656d7747879d5eed2b9fb70,
         type: 3}
       propertyPath: m_Name
       value: Particle System (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565572236115410214, guid: 7ee21df33656d7747879d5eed2b9fb70,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7653911864493189278, guid: 7ee21df33656d7747879d5eed2b9fb70,
         type: 3}

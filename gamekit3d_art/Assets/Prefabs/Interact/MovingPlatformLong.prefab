@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 695765856998673579}
-  - component: {fileID: 695765856998673576}
-  m_Layer: 0
+  - component: {fileID: 23383853}
+  - component: {fileID: 23383854}
+  m_Layer: 16
   m_Name: MovingPlatformLong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695765856998673577}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.210842, y: -3.1265018, z: -20.534874}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -37,7 +38,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &695765856998673576
+--- !u!65 &23383853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695765856998673577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.76, y: 1.06, z: 3.96}
+  m_Center: {x: 0, y: 2.54, z: 0}
+--- !u!114 &23383854
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,13 +60,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 695765856998673577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a105f29c3b0f2468007fc5da301107, type: 3}
+  m_Script: {fileID: 11500000, guid: c4a564ffb0aaed0499ef4d4519741983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: -0.4705076, y: -1.616502, z: -1.634399}
-  endPosition: {x: -0.4705076, y: 5.148, z: -1.634399}
-  time: 5
-  moveType: 2
+  startPosition: {x: 95.79818, y: 1.977781, z: -102.2044}
+  endPosition: {x: 95.79818, y: 1.977781, z: -52.7}
+  time: 15
+  moveType: 1
   positionType: 1
   onMoveEnd:
     m_PersistentCalls:
@@ -71,7 +85,7 @@ GameObject:
   - component: {fileID: 845131701039417636}
   - component: {fileID: 845131701040516068}
   - component: {fileID: 3695847405892476221}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MovingPlatformCorner (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +178,7 @@ GameObject:
   - component: {fileID: 1851166722963947170}
   - component: {fileID: 1851166722965077090}
   - component: {fileID: 3159222665002120753}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MovingPlatformCorner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +271,7 @@ GameObject:
   - component: {fileID: 2127859280905959169}
   - component: {fileID: 2127859280907056577}
   - component: {fileID: 7267677871401866742}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MovingPlatformCorner (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +390,7 @@ GameObject:
   - component: {fileID: 8426344551781678191}
   - component: {fileID: 8426344551780712111}
   - component: {fileID: 645127564949494426}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MovingPlatformCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
