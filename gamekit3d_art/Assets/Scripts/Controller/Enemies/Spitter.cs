@@ -84,9 +84,13 @@ public class Spitter : Chomper
     public override void AttackBegin()
     {
         //base.AttackBegin();
-        GameObject b = GameObject.Instantiate(bulletPrefab);
-        b.transform.position = transform.Find("BulletPos").position;
-        b.GetComponent<Bullet>().Shoot(target.transform.position, transform.forward);
+        if(target != null)
+        {
+            GameObject b = GameObject.Instantiate(bulletPrefab);
+            b.transform.position = transform.Find("BulletPos").position;
+            b.GetComponent<Bullet>().Shoot(target.transform.position, transform.forward);
+        }
+
     }
     
     public override void AttackEnd()
