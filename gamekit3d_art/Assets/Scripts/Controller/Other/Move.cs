@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+//物体移动
 public enum MoveType 
 {
     Once,
@@ -35,7 +36,7 @@ public class Move : MonoBehaviour
     /// </summary>
     private float timer;
 
-    private float percent;
+    protected float percent;
 
     private bool isMoving = false;
     /// <summary>
@@ -112,7 +113,7 @@ public class Move : MonoBehaviour
         }
     }
 
-    private void MoveExcute()
+    protected virtual void MoveExcute()
     {
         switch (positionType)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class SceneChange : MonoBehaviour
         {
             if (loadView != null)
             {
-                Destroy(loadView);
+                SceneManager.MoveGameObjectToScene(loadView.gameObject, SceneManager.GetActiveScene());
+                Destroy(loadView.gameObject);
             }
         });
     }

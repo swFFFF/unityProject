@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class CheckPoint
@@ -21,6 +22,7 @@ public class WeaponAttackController : MonoBehaviour
     public GameObject myself;
     private List<GameObject> attackList = new List<GameObject>();
     public GameObject hitPrefab;
+    public UnityEvent OnAttack;
     #endregion
 
     #region Unity生命周期
@@ -114,7 +116,7 @@ public class WeaponAttackController : MonoBehaviour
         data.damage = damage;
         data.damagePosition = myself.transform.position;
         damageable.OnDamage(data);
-
+        OnAttack?.Invoke();
         attackList.Add(obj);
         return true;
     }

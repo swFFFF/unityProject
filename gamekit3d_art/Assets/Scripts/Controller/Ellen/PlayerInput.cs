@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    //单例
+    public static PlayerInput Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public Vector2 Move
     {
         get
@@ -32,9 +40,18 @@ public class PlayerInput : MonoBehaviour
             return _attack && isCanControl;
         }
     }
+
+    public bool Pause
+    {
+        get
+        {
+            return _pause && isCanControl;
+        }
+    }
     private Vector2 _move;
     private bool _jump;
     private bool _attack;
+    private bool _pause;
 
     private bool isCanControl = true;
     private void Update()
@@ -42,6 +59,7 @@ public class PlayerInput : MonoBehaviour
         _move.Set(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         _jump = Input.GetButtonDown("Jump");
         _attack = Input.GetButtonDown("Fire1");
+        _pause = Input.GetButtonDown("Pause");
     }
 
     //获得控制
