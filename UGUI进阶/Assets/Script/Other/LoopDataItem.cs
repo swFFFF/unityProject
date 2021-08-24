@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LoopDataItem
 {
-
     public int id;
     public LoopDataItem(int id)
     {
