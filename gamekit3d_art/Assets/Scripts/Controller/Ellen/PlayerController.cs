@@ -37,6 +37,11 @@ public class PlayerController : MonoBehaviour
     public GameObject weapon;
 
     public Vector3 respawnPosition;
+
+    public RandomAudioPlayer jumpPlayer;
+    public RandomAudioPlayer attackPlayer;
+    public RandomAudioPlayer stepPlayer;
+    private CheckGroundMaterial groundMaterial;
     #endregion
 
     #region 常量
@@ -52,7 +57,7 @@ public class PlayerController : MonoBehaviour
         playerInput = transform.GetComponent<PlayerInput>();
         characterController = transform.GetComponent<CharacterController>();
         animator = transform.GetComponent<Animator>();
-
+        groundMaterial = transform.GetComponent<CheckGroundMaterial>();
     }
 
     private void Update()
@@ -118,6 +123,8 @@ public class PlayerController : MonoBehaviour
             {
                 verticalSpeed = jumpSpeed;
                 isGrounded = false;
+
+                jumpPlayer.PlayRandomAudio();
             }
         }
         else
@@ -284,11 +291,17 @@ public class PlayerController : MonoBehaviour
     private void MeleeAttackStart()
     {
         weapon.GetComponent<WeaponAttackController>().StartAttack();
+        attackPlayer.PlayRandomAudio();
     }
 
     private void MeleeAttackEnd()
     {
         weapon.GetComponent<WeaponAttackController>().EndAttack();
+    }
+
+    public void PlayStep()
+    {
+        stepPlayer.PlayRandomAudio(groundMaterial.curMaterial);
     }
     #endregion
 
