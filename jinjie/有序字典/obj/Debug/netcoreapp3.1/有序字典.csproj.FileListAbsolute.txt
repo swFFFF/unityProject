@@ -1,0 +1,13 @@
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\bin\Debug\netcoreapp3.1\有序字典.exe
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\bin\Debug\netcoreapp3.1\有序字典.deps.json
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\bin\Debug\netcoreapp3.1\有序字典.runtimeconfig.json
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\bin\Debug\netcoreapp3.1\有序字典.runtimeconfig.dev.json
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\bin\Debug\netcoreapp3.1\有序字典.dll
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\bin\Debug\netcoreapp3.1\有序字典.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\obj\Debug\netcoreapp3.1\有序字典.csprojAssemblyReference.cache
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\obj\Debug\netcoreapp3.1\有序字典.AssemblyInfoInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\obj\Debug\netcoreapp3.1\有序字典.AssemblyInfo.cs
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\obj\Debug\netcoreapp3.1\有序字典.csproj.CoreCompileInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\obj\Debug\netcoreapp3.1\有序字典.dll
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\obj\Debug\netcoreapp3.1\有序字典.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\有序字典\obj\Debug\netcoreapp3.1\有序字典.genruntimeconfig.cache

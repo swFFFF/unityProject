@@ -1,0 +1,13 @@
+C:\Users\shiwenfeng\source\repos\jinjie\线程\bin\Debug\netcoreapp3.1\线程.exe
+C:\Users\shiwenfeng\source\repos\jinjie\线程\bin\Debug\netcoreapp3.1\线程.deps.json
+C:\Users\shiwenfeng\source\repos\jinjie\线程\bin\Debug\netcoreapp3.1\线程.runtimeconfig.json
+C:\Users\shiwenfeng\source\repos\jinjie\线程\bin\Debug\netcoreapp3.1\线程.runtimeconfig.dev.json
+C:\Users\shiwenfeng\source\repos\jinjie\线程\bin\Debug\netcoreapp3.1\线程.dll
+C:\Users\shiwenfeng\source\repos\jinjie\线程\bin\Debug\netcoreapp3.1\线程.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\线程\obj\Debug\netcoreapp3.1\线程.csprojAssemblyReference.cache
+C:\Users\shiwenfeng\source\repos\jinjie\线程\obj\Debug\netcoreapp3.1\线程.AssemblyInfoInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\线程\obj\Debug\netcoreapp3.1\线程.AssemblyInfo.cs
+C:\Users\shiwenfeng\source\repos\jinjie\线程\obj\Debug\netcoreapp3.1\线程.csproj.CoreCompileInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\线程\obj\Debug\netcoreapp3.1\线程.dll
+C:\Users\shiwenfeng\source\repos\jinjie\线程\obj\Debug\netcoreapp3.1\线程.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\线程\obj\Debug\netcoreapp3.1\线程.genruntimeconfig.cache

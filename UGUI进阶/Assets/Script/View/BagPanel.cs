@@ -13,11 +13,23 @@ public class BagPanel : ViewBase
     public GameObject articalItemPrefab;
     public BagGrid[] bagGrids;
     public MenuPanel menuPanel;
+    //当前所处格子
+    public BagGrid currentHoverGrid;
+    //当前拖拽物品
+    public ArticleItem currentDragArticle;
+
+    public static BagPanel _instance;
+
+    public ArticleInformation articleInformation;
     #endregion
 
     #region Unity回调
     private void Awake()
     {
+        if(_instance == null)
+        {
+            _instance = this;
+        }
         InitArticleData();
         bagGrids = transform.GetComponentsInChildren<BagGrid>();
     }
@@ -105,7 +117,7 @@ public class BagPanel : ViewBase
     {
         for(int i = 0; i < bagGrids.Length; i++)
         {
-            if(bagGrids[i].ArticleItem == null)
+            if (bagGrids[i].ArticleItem == null)
             {
                 return bagGrids[i];
             }

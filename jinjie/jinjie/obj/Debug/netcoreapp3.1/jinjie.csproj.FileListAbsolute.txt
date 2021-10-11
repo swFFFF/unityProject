@@ -1,0 +1,13 @@
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\bin\Debug\netcoreapp3.1\jinjie.exe
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\bin\Debug\netcoreapp3.1\jinjie.deps.json
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\bin\Debug\netcoreapp3.1\jinjie.runtimeconfig.json
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\bin\Debug\netcoreapp3.1\jinjie.runtimeconfig.dev.json
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\bin\Debug\netcoreapp3.1\jinjie.dll
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\bin\Debug\netcoreapp3.1\jinjie.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\obj\Debug\netcoreapp3.1\jinjie.csprojAssemblyReference.cache
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\obj\Debug\netcoreapp3.1\jinjie.AssemblyInfoInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\obj\Debug\netcoreapp3.1\jinjie.AssemblyInfo.cs
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\obj\Debug\netcoreapp3.1\jinjie.csproj.CoreCompileInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\obj\Debug\netcoreapp3.1\jinjie.dll
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\obj\Debug\netcoreapp3.1\jinjie.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\jinjie\obj\Debug\netcoreapp3.1\jinjie.genruntimeconfig.cache

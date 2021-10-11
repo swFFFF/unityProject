@@ -1,0 +1,13 @@
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\bin\Debug\netcoreapp3.1\索引器.exe
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\bin\Debug\netcoreapp3.1\索引器.deps.json
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\bin\Debug\netcoreapp3.1\索引器.runtimeconfig.json
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\bin\Debug\netcoreapp3.1\索引器.runtimeconfig.dev.json
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\bin\Debug\netcoreapp3.1\索引器.dll
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\bin\Debug\netcoreapp3.1\索引器.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\obj\Debug\netcoreapp3.1\索引器.csprojAssemblyReference.cache
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\obj\Debug\netcoreapp3.1\索引器.AssemblyInfoInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\obj\Debug\netcoreapp3.1\索引器.AssemblyInfo.cs
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\obj\Debug\netcoreapp3.1\索引器.csproj.CoreCompileInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\obj\Debug\netcoreapp3.1\索引器.dll
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\obj\Debug\netcoreapp3.1\索引器.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\索引器\obj\Debug\netcoreapp3.1\索引器.genruntimeconfig.cache

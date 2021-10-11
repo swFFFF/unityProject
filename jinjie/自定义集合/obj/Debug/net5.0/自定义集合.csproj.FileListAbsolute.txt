@@ -1,0 +1,16 @@
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\obj\Debug\net5.0\自定义集合.csprojAssemblyReference.cache
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\obj\Debug\net5.0\自定义集合.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\obj\Debug\net5.0\自定义集合.AssemblyInfoInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\obj\Debug\net5.0\自定义集合.AssemblyInfo.cs
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\obj\Debug\net5.0\自定义集合.csproj.CoreCompileInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\bin\Debug\net5.0\自定义集合.exe
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\bin\Debug\net5.0\自定义集合.deps.json
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\bin\Debug\net5.0\自定义集合.runtimeconfig.json
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\bin\Debug\net5.0\自定义集合.runtimeconfig.dev.json
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\bin\Debug\net5.0\自定义集合.dll
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\bin\Debug\net5.0\ref\自定义集合.dll
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\bin\Debug\net5.0\自定义集合.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\obj\Debug\net5.0\自定义集合.dll
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\obj\Debug\net5.0\ref\自定义集合.dll
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\obj\Debug\net5.0\自定义集合.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\自定义集合\obj\Debug\net5.0\自定义集合.genruntimeconfig.cache

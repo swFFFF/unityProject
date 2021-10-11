@@ -1,0 +1,16 @@
+C:\Users\shiwenfeng\source\repos\test111\bin\Debug\net5.0\test111.exe
+C:\Users\shiwenfeng\source\repos\test111\bin\Debug\net5.0\test111.deps.json
+C:\Users\shiwenfeng\source\repos\test111\bin\Debug\net5.0\test111.runtimeconfig.json
+C:\Users\shiwenfeng\source\repos\test111\bin\Debug\net5.0\test111.runtimeconfig.dev.json
+C:\Users\shiwenfeng\source\repos\test111\bin\Debug\net5.0\test111.dll
+C:\Users\shiwenfeng\source\repos\test111\bin\Debug\net5.0\ref\test111.dll
+C:\Users\shiwenfeng\source\repos\test111\bin\Debug\net5.0\test111.pdb
+C:\Users\shiwenfeng\source\repos\test111\obj\Debug\net5.0\test111.csprojAssemblyReference.cache
+C:\Users\shiwenfeng\source\repos\test111\obj\Debug\net5.0\test111.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shiwenfeng\source\repos\test111\obj\Debug\net5.0\test111.AssemblyInfoInputs.cache
+C:\Users\shiwenfeng\source\repos\test111\obj\Debug\net5.0\test111.AssemblyInfo.cs
+C:\Users\shiwenfeng\source\repos\test111\obj\Debug\net5.0\test111.csproj.CoreCompileInputs.cache
+C:\Users\shiwenfeng\source\repos\test111\obj\Debug\net5.0\test111.dll
+C:\Users\shiwenfeng\source\repos\test111\obj\Debug\net5.0\ref\test111.dll
+C:\Users\shiwenfeng\source\repos\test111\obj\Debug\net5.0\test111.pdb
+C:\Users\shiwenfeng\source\repos\test111\obj\Debug\net5.0\test111.genruntimeconfig.cache

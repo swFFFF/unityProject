@@ -1,0 +1,13 @@
+C:\Users\shiwenfeng\source\repos\jinjie\集合\bin\Debug\netcoreapp3.1\集合.exe
+C:\Users\shiwenfeng\source\repos\jinjie\集合\bin\Debug\netcoreapp3.1\集合.deps.json
+C:\Users\shiwenfeng\source\repos\jinjie\集合\bin\Debug\netcoreapp3.1\集合.runtimeconfig.json
+C:\Users\shiwenfeng\source\repos\jinjie\集合\bin\Debug\netcoreapp3.1\集合.runtimeconfig.dev.json
+C:\Users\shiwenfeng\source\repos\jinjie\集合\bin\Debug\netcoreapp3.1\集合.dll
+C:\Users\shiwenfeng\source\repos\jinjie\集合\bin\Debug\netcoreapp3.1\集合.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\集合\obj\Debug\netcoreapp3.1\集合.csprojAssemblyReference.cache
+C:\Users\shiwenfeng\source\repos\jinjie\集合\obj\Debug\netcoreapp3.1\集合.AssemblyInfoInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\集合\obj\Debug\netcoreapp3.1\集合.AssemblyInfo.cs
+C:\Users\shiwenfeng\source\repos\jinjie\集合\obj\Debug\netcoreapp3.1\集合.csproj.CoreCompileInputs.cache
+C:\Users\shiwenfeng\source\repos\jinjie\集合\obj\Debug\netcoreapp3.1\集合.dll
+C:\Users\shiwenfeng\source\repos\jinjie\集合\obj\Debug\netcoreapp3.1\集合.pdb
+C:\Users\shiwenfeng\source\repos\jinjie\集合\obj\Debug\netcoreapp3.1\集合.genruntimeconfig.cache
