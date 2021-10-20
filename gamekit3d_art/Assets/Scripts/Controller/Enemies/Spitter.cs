@@ -113,8 +113,10 @@ public class Spitter : Chomper
 
     protected override void OnDrawGizmosSelected()
     {
+#if UNITY_EDITOR
         base.OnDrawGizmosSelected();
         UnityEditor.Handles.color = new Color(Color.grey.r, Color.gray.g, Color.gray.b, 0.2f);
         UnityEditor.Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, 360, escapeDistance);
+#endif
     }
 }
