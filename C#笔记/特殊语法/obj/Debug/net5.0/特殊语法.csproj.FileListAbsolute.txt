@@ -1,0 +1,16 @@
+D:\unityProject\C#笔记\特殊语法\bin\Debug\net5.0\特殊语法.exe
+D:\unityProject\C#笔记\特殊语法\bin\Debug\net5.0\特殊语法.deps.json
+D:\unityProject\C#笔记\特殊语法\bin\Debug\net5.0\特殊语法.runtimeconfig.json
+D:\unityProject\C#笔记\特殊语法\bin\Debug\net5.0\特殊语法.runtimeconfig.dev.json
+D:\unityProject\C#笔记\特殊语法\bin\Debug\net5.0\特殊语法.dll
+D:\unityProject\C#笔记\特殊语法\bin\Debug\net5.0\ref\特殊语法.dll
+D:\unityProject\C#笔记\特殊语法\bin\Debug\net5.0\特殊语法.pdb
+D:\unityProject\C#笔记\特殊语法\obj\Debug\net5.0\特殊语法.csprojAssemblyReference.cache
+D:\unityProject\C#笔记\特殊语法\obj\Debug\net5.0\特殊语法.GeneratedMSBuildEditorConfig.editorconfig
+D:\unityProject\C#笔记\特殊语法\obj\Debug\net5.0\特殊语法.AssemblyInfoInputs.cache
+D:\unityProject\C#笔记\特殊语法\obj\Debug\net5.0\特殊语法.AssemblyInfo.cs
+D:\unityProject\C#笔记\特殊语法\obj\Debug\net5.0\特殊语法.csproj.CoreCompileInputs.cache
+D:\unityProject\C#笔记\特殊语法\obj\Debug\net5.0\特殊语法.dll
+D:\unityProject\C#笔记\特殊语法\obj\Debug\net5.0\ref\特殊语法.dll
+D:\unityProject\C#笔记\特殊语法\obj\Debug\net5.0\特殊语法.pdb
+D:\unityProject\C#笔记\特殊语法\obj\Debug\net5.0\特殊语法.genruntimeconfig.cache

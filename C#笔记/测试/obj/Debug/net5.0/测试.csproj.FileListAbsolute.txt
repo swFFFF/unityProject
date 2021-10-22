@@ -1,0 +1,15 @@
+D:\unityProject\C#笔记\测试\bin\Debug\net5.0\测试.exe
+D:\unityProject\C#笔记\测试\bin\Debug\net5.0\测试.deps.json
+D:\unityProject\C#笔记\测试\bin\Debug\net5.0\测试.runtimeconfig.json
+D:\unityProject\C#笔记\测试\bin\Debug\net5.0\测试.runtimeconfig.dev.json
+D:\unityProject\C#笔记\测试\bin\Debug\net5.0\测试.dll
+D:\unityProject\C#笔记\测试\bin\Debug\net5.0\ref\测试.dll
+D:\unityProject\C#笔记\测试\bin\Debug\net5.0\测试.pdb
+D:\unityProject\C#笔记\测试\obj\Debug\net5.0\测试.GeneratedMSBuildEditorConfig.editorconfig
+D:\unityProject\C#笔记\测试\obj\Debug\net5.0\测试.AssemblyInfoInputs.cache
+D:\unityProject\C#笔记\测试\obj\Debug\net5.0\测试.AssemblyInfo.cs
+D:\unityProject\C#笔记\测试\obj\Debug\net5.0\测试.csproj.CoreCompileInputs.cache
+D:\unityProject\C#笔记\测试\obj\Debug\net5.0\测试.dll
+D:\unityProject\C#笔记\测试\obj\Debug\net5.0\ref\测试.dll
+D:\unityProject\C#笔记\测试\obj\Debug\net5.0\测试.pdb
+D:\unityProject\C#笔记\测试\obj\Debug\net5.0\测试.genruntimeconfig.cache

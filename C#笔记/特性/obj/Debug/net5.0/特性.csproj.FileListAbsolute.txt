@@ -1,0 +1,16 @@
+D:\unityProject\C#笔记\特性\bin\Debug\net5.0\特性.exe
+D:\unityProject\C#笔记\特性\bin\Debug\net5.0\特性.deps.json
+D:\unityProject\C#笔记\特性\bin\Debug\net5.0\特性.runtimeconfig.json
+D:\unityProject\C#笔记\特性\bin\Debug\net5.0\特性.runtimeconfig.dev.json
+D:\unityProject\C#笔记\特性\bin\Debug\net5.0\特性.dll
+D:\unityProject\C#笔记\特性\bin\Debug\net5.0\ref\特性.dll
+D:\unityProject\C#笔记\特性\bin\Debug\net5.0\特性.pdb
+D:\unityProject\C#笔记\特性\obj\Debug\net5.0\特性.csprojAssemblyReference.cache
+D:\unityProject\C#笔记\特性\obj\Debug\net5.0\特性.GeneratedMSBuildEditorConfig.editorconfig
+D:\unityProject\C#笔记\特性\obj\Debug\net5.0\特性.AssemblyInfoInputs.cache
+D:\unityProject\C#笔记\特性\obj\Debug\net5.0\特性.AssemblyInfo.cs
+D:\unityProject\C#笔记\特性\obj\Debug\net5.0\特性.csproj.CoreCompileInputs.cache
+D:\unityProject\C#笔记\特性\obj\Debug\net5.0\特性.dll
+D:\unityProject\C#笔记\特性\obj\Debug\net5.0\ref\特性.dll
+D:\unityProject\C#笔记\特性\obj\Debug\net5.0\特性.pdb
+D:\unityProject\C#笔记\特性\obj\Debug\net5.0\特性.genruntimeconfig.cache
