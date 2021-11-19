@@ -83,6 +83,8 @@ public class EnemyBase : MonoBehaviour
     }
     protected virtual void OnDrawGizmosSelected()
     {
+#if UNITY_EDITOR
+
         //画出检测范围
         Gizmos.color = new Color(Color.blue.r, Color.blue.g, Color.blue.b, 0.4f);
         Gizmos.DrawSphere(transform.position, checkDistance);
@@ -100,6 +102,7 @@ public class EnemyBase : MonoBehaviour
         UnityEditor.Handles.color = new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.4f);
         UnityEditor.Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, lookAngle, checkDistance);
         UnityEditor.Handles.DrawSolidArc(transform.position, Vector3.down, transform.forward, lookAngle, checkDistance);
+#endif
     }
     #endregion
 
