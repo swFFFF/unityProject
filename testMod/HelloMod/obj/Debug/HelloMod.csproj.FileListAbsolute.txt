@@ -1,0 +1,8 @@
+E:\Learn\unityProject\testMod\HelloMod\bin\Debug\HelloMod.dll
+E:\Learn\unityProject\testMod\HelloMod\bin\Debug\HelloMod.pdb
+E:\Learn\unityProject\testMod\HelloMod\obj\Debug\HelloMod.csproj.CoreCompileInputs.cache
+E:\Learn\unityProject\testMod\HelloMod\obj\Debug\HelloMod.dll
+E:\Learn\unityProject\testMod\HelloMod\obj\Debug\HelloMod.pdb
+D:\SteamLibrary\steamapps\common\WarmSnow\BepInEx\plugins\HelloMod.dll
+D:\SteamLibrary\steamapps\common\WarmSnow\BepInEx\plugins\HelloMod.pdb
+E:\Learn\unityProject\testMod\HelloMod\obj\Debug\HelloMod.csproj.CopyComplete
